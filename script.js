@@ -25,11 +25,10 @@ var swiper = new Swiper(".mySwiper", {
 
 function isInViewport(element) {
   const rect = element.getBoundingClientRect();
-  console.log(window.innerHeight)
-  console.log(document.documentElement.clientHeight)
+ 
   return (
-      rect.top >= 0 &&
-      rect.bottom <= (window.innerHeight+rect.height || document.documentElement.clientHeight+rect.height )
+      rect.top <= (window.innerHeight/2 || document.documentElement.clientHeight/2) &&
+      rect.bottom >=  (window.innerHeight/2 || document.documentElement.clientHeight/2) 
       
   );
 }
@@ -40,36 +39,42 @@ const cenovnik = document.querySelector('#cenovnik')
 const zadnji = document.querySelector('#zadnji')
 
 document.addEventListener('scroll',()=>{
+  uslugeRect=usluge.getBoundingClientRect()
+  if(li[0].classList[0]!=='selektovani'){
   if(isInViewport(pocetna)){
     li.forEach(li=>{
       li.classList.remove('selektovani')
     })
-    li[0].classList.add('selektovani')
+    li[0].classList.add('selektovani')}
   }
   if(isInViewport(oNama)){
+    if(li[1].classList[0]!=='selektovani'){
     li.forEach(li=>{
       li.classList.remove('selektovani')
     })
-    li[1].classList.add('selektovani')
+    li[1].classList.add('selektovani')}
   }
   if(isInViewport(usluge)){
+    if(li[2].classList[0]!=='selektovani'){
     console.log('usluge')
     li.forEach(li=>{
       li.classList.remove('selektovani')
     })
-    li[2].classList.add('selektovani')
+    li[2].classList.add('selektovani')}
   }
   if(isInViewport(cenovnik)){
+    if(li[3].classList[0]!=='selektovani'){
     li.forEach(li=>{
       li.classList.remove('selektovani')
     })
-    li[3].classList.add('selektovani')
+    li[3].classList.add('selektovani')}
   }
   if(isInViewport(zadnji)){
+    if(li[4].classList[0]!=='selektovani'){
     li.forEach(li=>{
       li.classList.remove('selektovani')
     })
-    li[4].classList.add('selektovani')
+    li[4].classList.add('selektovani')}
   }
 })
 
